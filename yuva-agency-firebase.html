@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">YUVA AGENCY CONTENT CREATOR — 3D Creative Digital Studio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: "#050508",
+            surface: "#0c0d14",
+            "surface-card": "#121420",
+            brand: {
+              purple: "#8b5cf6",
+              violet: "#7c3aed",
+              deep: "#4c1d95",
+              blue: "#38bdf8",
+              cyan: "#06b6d4",
+              crimson: "#ff0000"
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Space Grotesk', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap');
+    
+    body {
+      background-color: #050508;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .font-heading { font-family: 'Space Grotesk', sans-serif; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #050508; }
+    ::-webkit-scrollbar-thumb { background: #1e2238; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+
+    .glass-card {
+      background: rgba(12, 13, 20, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.3);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-[#050508] text-slate-100 antialiased min-h-screen selection:bg-brand-violet/30 selection:text-white">
+
+  <!-- ========================================================= -->
+  <!-- 1. PUBLIC WEBSITE INTERFACE -->
+  <!-- ========================================================= -->
+  <div id="public-view">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050508]/85 backdrop-blur-xl border-b border-white/5 py-4 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <!-- Brand Logo (Double click triggers admin login modal) -->
+        <a href="#home" ondblclick="openAdminModal(); return false;" title="Double click for Admin Access" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-violet via-brand-purple to-brand-blue p-[1.5px] shadow-[0_0_20px_rgba(139,92,246,0.4)]">
+            <div class="w-full h-full bg-[#07080e] rounded-[10px] flex items-center justify-center">
+              <span id="nav-brand-letter" class="font-heading font-black text-lg text-white">Y</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span id="nav-brand-name" class="font-heading font-black text-xl tracking-tight text-white group-hover:text-brand-blue transition-colors">YUVA</span>
+            <span id="nav-brand-sub" class="text-[9px] font-mono uppercase tracking-[0.25em] text-slate-400 -mt-1">Agency</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1 bg-[#0e101a]/70 border border-white/5 rounded-full px-5 py-1.5 backdrop-blur-md">
+          <a href="#home" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Home</a>
+          <a href="#services" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Services</a>
+          <a href="#portfolio" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Portfolio</a>
+          <a href="#packages" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Packages</a>
+          <a href="#team" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Team</a>
+          <a href="#reviews" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Reviews</a>
+          <a href="#contact" class="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Start Project Action CTA -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-gradient-to-r from-brand-violet to-brand-purple hover:from-brand-purple hover:to-brand-blue shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all">
+            Start Project →
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Left Column: Typography & CTAs -->
+        <div class="lg:col-span-7 space-y-6 z-10 text-center lg:text-left">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-violet/10 border border-brand-violet/30 backdrop-blur-md shadow-[0_0_20px_rgba(139,92,246,0.25)]">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <span id="hero-badge-text" class="text-xs font-mono font-bold tracking-widest uppercase text-brand-blue">
+              PREMIER 3D & MEDIA CREATIVE STUDIO
+            </span>
+          </div>
+
+          <!-- BOLD HEADLINE: Editable from Admin CMS -->
+          <h1 id="hero-title-container" class="font-heading font-black text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+            <span id="hero-headline-1" class="block text-white font-black tracking-tight">
+              YUVA AGENCY
+            </span>
+            <span id="hero-headline-2" class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-violet via-brand-purple to-brand-blue font-black tracking-wide mt-1 drop-shadow-[0_0_35px_rgba(139,92,246,0.35)]">
+              CONTENT CREATOR
+            </span>
+          </h1>
+
+          <p id="hero-desc-text" class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed mx-auto lg:mx-0 font-normal">
+            We engineer high-impact 3D visual experiences, viral Instagram Reels & Shorts, cinematic YouTube video editing, and bespoke digital architectures designed to dominate modern attention.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-gradient-to-r from-brand-violet via-brand-purple to-brand-blue hover:scale-105 shadow-[0_0_30px_rgba(124,58,237,0.4)] transition-all text-center">
+              Explore Services
+            </a>
+            <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider text-slate-300 bg-white/5 hover:bg-white/10 hover:text-white border border-white/10 transition-all text-center">
+              View Portfolio
+            </a>
+          </div>
+
+          <!-- Live Metrics Bar -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/5 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <div id="hero-stat-1" class="font-heading font-bold text-2xl text-white">100M+</div>
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Views Generated</div>
+            </div>
+            <div>
+              <div id="hero-stat-2" class="font-heading font-bold text-2xl text-white">450+</div>
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Videos Edited</div>
+            </div>
+            <div>
+              <div id="hero-stat-3" class="font-heading font-bold text-2xl text-brand-blue">99.8%</div>
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive 3D YouTube & Shorts Canvas -->
+        <div class="lg:col-span-5 relative w-full aspect-square max-w-[500px] mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-tr from-brand-violet/30 via-red-600/20 to-brand-blue/30 rounded-full blur-[90px] pointer-events-none"></div>
+          <div id="three-container" class="w-full h-full relative cursor-grab active:cursor-grabbing"></div>
+          <div class="absolute bottom-2 right-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-slate-400 pointer-events-none">
+            3D Interactive • Move mouse to inspect
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="text-xs font-mono uppercase tracking-widest text-brand-blue font-bold">Capabilities & Solutions</div>
+        <h2 id="services-section-title" class="font-heading font-black text-3xl sm:text-4xl text-white">Engineered For Viral Velocity</h2>
+        <p class="text-sm text-slate-400 leading-relaxed">From single viral hooks to complete omnichannel media dominance, explore our core creator disciplines.</p>
+      </div>
+
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-brand-purple font-bold mb-2">Projects & Case Studies</div>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">Past & Upcoming Productions</h2>
+          <p class="text-xs text-slate-400 mt-1">Explore what we have built and the innovative productions currently in progress.</p>
+        </div>
+        <!-- Filters -->
+        <div id="portfolio-filters" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="packages" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="text-xs font-mono uppercase tracking-widest text-brand-blue font-bold">Transparent Retainers</div>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">Scalable Production Packages</h2>
+      </div>
+
+      <div id="packages-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch"></div>
+    </section>
+
+    <!-- TEAM ROSTER SECTION -->
+    <section id="team" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="text-xs font-mono uppercase tracking-widest text-brand-purple font-bold">The Creative Collective</div>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">Meet the Minds Behind the Magic</h2>
+        <p class="text-sm text-slate-400 leading-relaxed">Visionary founders, viral video editors, and 3D architects shaping digital storytelling.</p>
+      </div>
+
+      <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- VERIFIED REVIEWS SECTION -->
+    <section id="reviews" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="text-xs font-mono uppercase tracking-widest text-brand-blue font-bold">Client Testimonials</div>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">Reputation Built on Retention</h2>
+      </div>
+
+      <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-white/5">
+      <div class="text-center mb-12 space-y-3">
+        <div class="text-xs font-mono uppercase tracking-widest text-brand-purple font-bold">Start A Project</div>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">Let's Create Something Extraordinary</h2>
+        <p class="text-xs text-slate-400">Direct inquiries: <span id="contact-display-email" class="text-brand-blue font-mono">contact@yuvaagency.com</span> | <span id="contact-display-phone" class="text-brand-purple font-mono">+91 98765 43210</span></p>
+      </div>
+
+      <form id="contact-form" onsubmit="handleContactSubmit(event)" class="glass-card rounded-3xl p-8 sm:p-12 space-y-6">
+        <div id="contact-success" class="hidden p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs">
+          🎉 Thank you! Your project inquiry has been recorded in our production system. We will contact you within 24 hours.
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Full Name *</label>
+            <input type="text" id="c-name" required placeholder="Alexander Vance" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:border-brand-purple">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Email Address *</label>
+            <input type="email" id="c-email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:border-brand-purple">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Interested Service</label>
+            <select id="c-service" class="w-full px-4 py-3 rounded-xl bg-[#0c0d15] border border-white/10 text-xs text-white outline-none focus:border-brand-purple">
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Approximate Budget</label>
+            <select id="c-budget" class="w-full px-4 py-3 rounded-xl bg-[#0c0d15] border border-white/10 text-xs text-white outline-none focus:border-brand-purple">
+              <option>$1,500 – $3,500</option>
+              <option>$3,500 – $7,500</option>
+              <option>$7,500 – $15,000</option>
+              <option>$15,000+</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">Project Vision & Goals *</label>
+          <textarea id="c-message" required rows="4" placeholder="Tell us about your brand, audience, and creative goals..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:border-brand-purple leading-relaxed"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-purple hover:from-brand-purple hover:to-brand-blue text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(124,58,237,0.35)] transition-all cursor-pointer">
+          Submit Project Inquiry →
+        </button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/5 bg-[#030305] text-slate-500 text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span id="footer-brand-name" class="font-heading font-black text-lg text-white">YUVA</span>
+          <span>© 2026 YUVA Agency. All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="#services" class="hover:text-white transition-colors">Services</a>
+          <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+          <a href="#packages" class="hover:text-white transition-colors">Packages</a>
+          <a href="#team" class="hover:text-white transition-colors">Team</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="#admin" onclick="openAdminModal(); return false;" class="text-slate-400 hover:text-brand-purple font-semibold flex items-center gap-1 transition-colors cursor-pointer" title="Open Admin Command Center">
+            <span>🔒 Admin Portal</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 2. MASTER SEPARATE ADMIN CONTROL CENTER MODAL -->
+  <!-- ========================================================= -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-3 sm:p-6">
+    <!-- Admin Login Screen -->
+    <div id="admin-login-box" class="w-full max-w-md bg-[#0d0e17] border border-white/10 rounded-3xl p-8 shadow-2xl relative space-y-6">
+      <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-500 hover:text-white text-lg">✕</button>
+      
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 rounded-2xl bg-brand-violet/20 border border-brand-violet/40 text-brand-purple mx-auto flex items-center justify-center font-heading font-black text-xl">Y</div>
+        <h2 class="font-heading font-black text-2xl text-white">Admin Command Center</h2>
+        <p class="text-xs text-slate-400">Total website management portal</p>
+      </div>
+
+      <div id="admin-login-error" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs">
+        Invalid credentials. Try again.
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Username / Email</label>
+          <input type="text" id="admin-user" value="admin@yuvaagency.com" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white outline-none focus:border-brand-purple">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+          <input type="password" id="admin-pass" value="YuvaAdmin2026!" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white outline-none focus:border-brand-purple">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet to-brand-purple text-xs font-semibold text-white shadow-lg cursor-pointer hover:from-brand-purple hover:to-brand-blue transition-all">Authenticate & Access</button>
+      </form>
+    </div>
+
+    <!-- Master Admin Dashboard Suite -->
+    <div id="admin-dashboard-box" class="w-full max-w-6xl bg-[#090a12] border border-white/10 rounded-3xl p-5 sm:p-8 shadow-2xl relative max-h-[92vh] overflow-y-auto hidden space-y-6">
+      <!-- Dashboard Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="font-heading font-bold text-xl text-white">YUVA Agency Master Control Suite</h2>
+            <span class="px-2 py-0.5 rounded-full text-[10px] bg-brand-violet/20 text-brand-purple font-mono font-bold">FULL CMS</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5">Control Home, Services, Portfolio (Past & Upcoming), Packages, Team, Reviews & Contact.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="exportUpdatedWebsite()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/30 text-xs font-semibold transition-all cursor-pointer shadow-lg shadow-green-500/10" title="Download updated index.html with all latest edits">
+            <span>💾 Export Updated index.html (For Netlify)</span>
+          </button>
+          <button onclick="handleAdminLogout()" class="px-3 py-2 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 text-xs hover:bg-red-500/20 transition-colors">Sign Out</button>
+          <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white text-xl p-1">✕</button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5">
+          <div class="text-[10px] font-mono uppercase text-slate-400">Total Services</div>
+          <div id="stat-services" class="text-2xl font-bold font-heading text-white mt-0.5">0</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5">
+          <div class="text-[10px] font-mono uppercase text-slate-400">Portfolio Projects</div>
+          <div id="stat-portfolio" class="text-2xl font-bold font-heading text-brand-blue mt-0.5">0</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5">
+          <div class="text-[10px] font-mono uppercase text-slate-400">Team Creators</div>
+          <div id="stat-team" class="text-2xl font-bold font-heading text-brand-purple mt-0.5">0</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5">
+          <div class="text-[10px] font-mono uppercase text-slate-400">Client Inquiries</div>
+          <div id="stat-enquiries" class="text-2xl font-bold font-heading text-green-400 mt-0.5">0</div>
+        </div>
+      </div>
+
+      <!-- Master Navigation Tabs -->
+      <div class="flex items-center gap-1.5 border-b border-white/10 pb-3 overflow-x-auto scrollbar-none">
+        <button onclick="switchAdminTab('home')" id="tab-btn-home" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all bg-brand-violet/20 text-white border border-brand-violet/40">🏠 Home & Branding</button>
+        <button onclick="switchAdminTab('services')" id="tab-btn-services" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">🛠️ Services</button>
+        <button onclick="switchAdminTab('portfolio')" id="tab-btn-portfolio" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">🎨 Portfolio (Past & Upcoming)</button>
+        <button onclick="switchAdminTab('packages')" id="tab-btn-packages" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">💎 Packages</button>
+        <button onclick="switchAdminTab('team')" id="tab-btn-team" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">👥 Team Members</button>
+        <button onclick="switchAdminTab('reviews')" id="tab-btn-reviews" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">⭐️ Reviews</button>
+        <button onclick="switchAdminTab('contact')" id="tab-btn-contact" class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white">📩 Inquiries & Contact Info</button>
+      </div>
+
+      <!-- TAB 1: HOME & BRANDING -->
+      <div id="admin-tab-home" class="space-y-5">
+        <form onsubmit="handleSaveHomeSettings(event)" class="space-y-4">
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+            <h3 class="text-xs font-bold font-mono uppercase text-brand-purple">Brand Identity & Hero Headlines</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Agency Name</label>
+                <input type="text" id="adm-agency-name" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Subtitle / Tag</label>
+                <input type="text" id="adm-agency-sub" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Top Hero Badge Text</label>
+                <input type="text" id="adm-badge-text" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Headline Line 1 (Bold White)</label>
+                <input type="text" id="adm-headline-1" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple font-bold">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Headline Line 2 (Glow Gradient)</label>
+                <input type="text" id="adm-headline-2" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple font-bold">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Hero Description Paragraph</label>
+              <textarea id="adm-hero-desc" rows="3" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple leading-relaxed"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Headline Font Family</label>
+                <select id="adm-font-family" class="w-full px-3.5 py-2 bg-[#0c0d15] border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+                  <option value="'Space Grotesk', sans-serif">Space Grotesk (Modern Cyber Tech)</option>
+                  <option value="'Outfit', sans-serif">Outfit (Clean High-Impact Agency)</option>
+                  <option value="'Cinzel', serif">Cinzel (Luxury Editorial Serif)</option>
+                  <option value="'Inter', sans-serif">Inter (Universal Geometric Sans)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Glow Color Gradient</label>
+                <select id="adm-glow-theme" class="w-full px-3.5 py-2 bg-[#0c0d15] border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+                  <option value="from-brand-violet via-brand-purple to-brand-blue">Signature Violet & Blue Glow</option>
+                  <option value="from-red-500 via-rose-500 to-amber-400">YouTube Crimson & Amber Spark</option>
+                  <option value="from-cyan-400 via-teal-400 to-blue-500">Electric Cyan Neon</option>
+                  <option value="from-white via-slate-200 to-slate-400">Platinum Monochrome</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+            <h3 class="text-xs font-bold font-mono uppercase text-brand-blue">Hero Stats Numbers</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">Stat 1: Views Generated</label>
+                <input type="text" id="adm-stat-1" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-white">
+              </div>
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">Stat 2: Videos Edited</label>
+                <input type="text" id="adm-stat-2" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-white">
+              </div>
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">Stat 3: Satisfaction %</label>
+                <input type="text" id="adm-stat-3" class="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-white">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-violet to-brand-purple hover:from-brand-purple hover:to-brand-blue text-xs font-semibold text-white shadow-lg transition-all cursor-pointer">
+            Save All Home & Hero Settings
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 2: SERVICES MANAGEMENT -->
+      <div id="admin-tab-services" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-mono uppercase text-white font-bold">Agency Service Capabilities</h3>
+          <button onclick="openServiceModal()" class="px-3.5 py-2 rounded-xl bg-brand-violet text-white text-xs font-semibold hover:bg-brand-purple cursor-pointer">+ Add New Service</button>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+              <tr>
+                <th class="p-3.5">Service Title</th>
+                <th class="p-3.5">Category</th>
+                <th class="p-3.5">Pricing</th>
+                <th class="p-3.5">Description</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-services-list" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: PORTFOLIO (PAST & UPCOMING PRODUCTIONS) -->
+      <div id="admin-tab-portfolio" class="hidden space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xs font-mono uppercase text-white font-bold">Portfolio & Upcoming Releases</h3>
+            <p class="text-[11px] text-slate-400">Showcase finished case studies and future productions in the pipeline.</p>
+          </div>
+          <button onclick="openPortfolioModal()" class="px-3.5 py-2 rounded-xl bg-brand-violet text-white text-xs font-semibold hover:bg-brand-purple cursor-pointer shrink-0">+ Add Project / Upcoming</button>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+              <tr>
+                <th class="p-3.5">Project</th>
+                <th class="p-3.5">Category</th>
+                <th class="p-3.5">Status</th>
+                <th class="p-3.5">Overview</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-portfolio-list" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: PACKAGES & PRICING -->
+      <div id="admin-tab-packages" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-mono uppercase text-white font-bold">Retainer Packages</h3>
+          <button onclick="openPackageModal()" class="px-3.5 py-2 rounded-xl bg-brand-violet text-white text-xs font-semibold hover:bg-brand-purple cursor-pointer">+ Add Package</button>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+              <tr>
+                <th class="p-3.5">Package Title</th>
+                <th class="p-3.5">Price & Period</th>
+                <th class="p-3.5">Highlight</th>
+                <th class="p-3.5">Key Deliverables</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-packages-list" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 5: TEAM MEMBERS -->
+      <div id="admin-tab-team" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-mono uppercase text-white font-bold">Agency Creators & Roster</h3>
+          <button onclick="openAddTeamModal()" class="px-3.5 py-2 rounded-xl bg-brand-violet text-white text-xs font-semibold hover:bg-brand-purple cursor-pointer">+ Add Team Member</button>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+              <tr>
+                <th class="p-3.5">Member</th>
+                <th class="p-3.5">Posting / Role</th>
+                <th class="p-3.5">Skills</th>
+                <th class="p-3.5">Status</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-team-list" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 6: CLIENT REVIEWS -->
+      <div id="admin-tab-reviews" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-mono uppercase text-white font-bold">Client Testimonials</h3>
+          <button onclick="openReviewModal()" class="px-3.5 py-2 rounded-xl bg-brand-violet text-white text-xs font-semibold hover:bg-brand-purple cursor-pointer">+ Add Review</button>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+              <tr>
+                <th class="p-3.5">Client Name</th>
+                <th class="p-3.5">Role / Company</th>
+                <th class="p-3.5">Rating</th>
+                <th class="p-3.5">Testimonial Quote</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-reviews-list" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 7: INQUIRIES & CONTACT INFO -->
+      <div id="admin-tab-contact" class="hidden space-y-6">
+        <!-- Agency Contact Details Form -->
+        <form onsubmit="handleSaveContactInfo(event)" class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+          <h3 class="text-xs font-bold font-mono uppercase text-brand-purple">Public Contact & Social Channels</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-slate-300 mb-1">Agency Inbound Email</label>
+              <input type="email" id="adm-contact-email" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs text-slate-300 mb-1">Support Phone Number</label>
+              <input type="text" id="adm-contact-phone" class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+            </div>
+          </div>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-brand-violet text-xs font-semibold text-white cursor-pointer hover:bg-brand-purple">Save Contact Info</button>
+        </form>
+
+        <!-- Inquiries Table -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono uppercase text-white font-bold">Client Project Inquiries</h3>
+          <div class="overflow-x-auto rounded-2xl border border-white/10">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-white/5 text-slate-400 uppercase font-mono">
+                <tr>
+                  <th class="p-3.5">Client Details</th>
+                  <th class="p-3.5">Requested Service</th>
+                  <th class="p-3.5">Budget</th>
+                  <th class="p-3.5">Status</th>
+                  <th class="p-3.5 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-enquiries-list" class="divide-y divide-white/5"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 3. SUB-MODALS FOR FULL CRUD -->
+  <!-- ========================================================= -->
+
+  <!-- Modal: Add / Edit Service -->
+  <div id="service-form-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#0d0e17] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="service-modal-title" class="font-heading font-bold text-lg text-white">Add Service</h3>
+        <button onclick="closeServiceModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <form onsubmit="handleSaveService(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Service Title *</label>
+          <input type="text" id="srv-title" required placeholder="e.g. Cinematic Video Editing" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Category</label>
+            <input type="text" id="srv-cat" required placeholder="Video Editing" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Price Text</label>
+            <input type="text" id="srv-price" required placeholder="From $1,200" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Description *</label>
+          <textarea id="srv-desc" required rows="3" placeholder="Explain what the service offers..." class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white"></textarea>
+        </div>
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" onclick="closeServiceModal()" class="px-4 py-2 rounded-xl bg-white/5 text-xs text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-violet text-xs font-semibold text-white hover:bg-brand-purple">Save Service</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Edit Portfolio Project (With Past & Upcoming Releases) -->
+  <div id="portfolio-form-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#0d0e17] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="portfolio-modal-title" class="font-heading font-bold text-lg text-white">Add Project</h3>
+        <button onclick="closePortfolioModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <form onsubmit="handleSavePortfolio(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Project Title *</label>
+          <input type="text" id="prj-title" required placeholder="e.g. Cyber Velocity 3D Launch" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Category</label>
+            <input type="text" id="prj-cat" required placeholder="Web Development / Video" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Status</label>
+            <select id="prj-status" class="w-full px-3.5 py-2.5 bg-[#0c0d15] border border-white/10 rounded-xl text-xs text-white">
+              <option value="COMPLETED">Completed Production</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="UPCOMING">Upcoming Release (Coming Soon)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Project Image with Device Upload -->
+        <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+          <label class="block text-xs font-semibold text-slate-300">Project Thumbnail</label>
+          <input type="file" id="prj-file-input" accept="image/*" onchange="handleProjectPhotoUpload(event)" class="hidden">
+          <div class="flex items-center gap-4">
+            <div onclick="document.getElementById('prj-file-input').click()" class="w-20 h-14 rounded-xl bg-white/5 border border-white/10 overflow-hidden flex items-center justify-center shrink-0 cursor-pointer hover:border-brand-purple relative group">
+              <img id="prj-photo-preview" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-[9px] text-white">Change</div>
+            </div>
+            <button type="button" onclick="document.getElementById('prj-file-input').click()" class="px-3.5 py-2 rounded-xl bg-brand-violet/20 hover:bg-brand-violet/30 text-white text-xs font-semibold border border-brand-violet/40">📁 Upload Thumbnail</button>
+          </div>
+          <input type="text" id="prj-img" placeholder="Or paste direct image URL..." class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-white" oninput="document.getElementById('prj-photo-preview').src = this.value">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Description *</label>
+          <textarea id="prj-desc" required rows="3" placeholder="Case study overview, goals achieved, or release date..." class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" onclick="closePortfolioModal()" class="px-4 py-2 rounded-xl bg-white/5 text-xs text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-violet text-xs font-semibold text-white hover:bg-brand-purple">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Edit Package -->
+  <div id="package-form-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#0d0e17] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="package-modal-title" class="font-heading font-bold text-lg text-white">Add Package</h3>
+        <button onclick="closePackageModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <form onsubmit="handleSavePackage(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Package Title *</label>
+          <input type="text" id="pkg-title" required placeholder="e.g. Full Agency Partner" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Price</label>
+            <input type="text" id="pkg-price" required placeholder="$3,900" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Period</label>
+            <input type="text" id="pkg-period" required placeholder="/ month or / project" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Description</label>
+          <textarea id="pkg-desc" rows="2" placeholder="Brief target client profile..." class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Key Features (comma-separated)</label>
+          <input type="text" id="pkg-features" required placeholder="16 Shorts, 4K Master, 48hr delivery" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div class="flex items-center gap-2 pt-1">
+          <input type="checkbox" id="pkg-featured" class="w-4 h-4 rounded accent-brand-purple">
+          <label for="pkg-featured" class="text-xs text-slate-300 font-semibold cursor-pointer">Mark as 'Most Popular' Highlighted Card</label>
+        </div>
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" onclick="closePackageModal()" class="px-4 py-2 rounded-xl bg-white/5 text-xs text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-violet text-xs font-semibold text-white hover:bg-brand-purple">Save Package</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Edit Team Member -->
+  <div id="team-form-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#0d0e17] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="team-modal-title" class="font-heading font-bold text-lg text-white">Add Team Member</h3>
+        <button onclick="closeTeamModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <form onsubmit="handleSaveTeamMember(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
+          <input type="text" id="m-name" required placeholder="e.g. Vignesh Raj" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+        </div>
+
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold text-slate-300">Posting / Designation / Role *</label>
+            <span class="text-[10px] font-mono text-slate-500">Pick or type custom</span>
+          </div>
+          <div class="flex flex-wrap gap-1 pb-1">
+            <button type="button" onclick="setRolePreset('Founder & CEO')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">Founder & CEO</button>
+            <button type="button" onclick="setRolePreset('Founder')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">Founder</button>
+            <button type="button" onclick="setRolePreset('Co-Founder & Creative Director')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">Co-Founder</button>
+            <button type="button" onclick="setRolePreset('Lead Video Editor')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">Lead Editor</button>
+            <button type="button" onclick="setRolePreset('Shorts & Reels Specialist')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">Shorts Specialist</button>
+            <button type="button" onclick="setRolePreset('3D Motion & Web Designer')" class="px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/10 text-[10px] text-slate-300 border border-white/5">3D Web</button>
+          </div>
+          <input type="text" id="m-role" required placeholder="Type custom posting: e.g. Founder, Co-Founder, Lead Editor..." class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+        </div>
+
+        <!-- Photo Upload (Direct Device / Gallery Upload + URL) -->
+        <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold text-slate-300">Member Photo / Avatar</label>
+            <span class="text-[10px] font-mono text-brand-blue">Gallery & Files Supported</span>
+          </div>
+
+          <div id="m-upload-badge" class="hidden p-2 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-[11px] flex items-center gap-1.5">
+            ✓ Photo selected and loaded directly from device!
+          </div>
+
+          <input type="file" id="m-file-input" accept="image/*" onchange="handleTeamPhotoUpload(event)" class="hidden">
+
+          <div class="flex items-center gap-4">
+            <div onclick="document.getElementById('m-file-input').click()" title="Click to upload/change photo" class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 overflow-hidden flex items-center justify-center shrink-0 cursor-pointer hover:border-brand-purple transition-all relative group">
+              <img id="m-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-[9px] text-white transition-opacity">Change</div>
+            </div>
+            <div class="flex-1 space-y-1.5">
+              <button type="button" onclick="document.getElementById('m-file-input').click()" class="px-3.5 py-2 rounded-xl bg-brand-violet/20 hover:bg-brand-violet/30 text-white text-xs font-semibold border border-brand-violet/40 transition-colors">📁 Upload from Gallery / Files</button>
+              <div class="text-[10px] text-slate-400">Opens your device camera roll or file manager directly. Supports JPG, PNG, WebP, HEIC up to 30MB.</div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-white/5">
+            <label class="block text-[11px] text-slate-400 mb-1">Or paste direct Image URL:</label>
+            <input type="text" id="m-avatar" placeholder="https://..." class="w-full px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-white outline-none focus:border-brand-purple" oninput="document.getElementById('m-photo-preview').src = this.value">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Short Bio</label>
+          <textarea id="m-bio" rows="2" placeholder="Brief creative bio or responsibilities..." class="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Key Skills (comma-separated)</label>
+          <input type="text" id="m-skills" placeholder="DaVinci Resolve, Premiere Pro, 4K Master, Viral Hooks" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white outline-none focus:border-brand-purple">
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" onclick="closeTeamModal()" class="px-4 py-2 rounded-xl bg-white/5 text-xs text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" id="team-modal-submit-btn" class="px-5 py-2 rounded-xl bg-gradient-to-r from-brand-violet to-brand-purple text-xs font-semibold text-white shadow-lg">Save Member</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Edit Review -->
+  <div id="review-form-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#0d0e17] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="review-modal-title" class="font-heading font-bold text-lg text-white">Add Review</h3>
+        <button onclick="closeReviewModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+      <form onsubmit="handleSaveReview(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Client Name *</label>
+          <input type="text" id="rev-name" required placeholder="Sophia Chen" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Client Role / Company</label>
+          <input type="text" id="rev-role" required placeholder="CMO, Nexus Tech" class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Testimonial Quote *</label>
+          <textarea id="rev-text" required rows="3" placeholder="What they said about working with YUVA Agency..." class="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-white"></textarea>
+        </div>
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
+          <button type="button" onclick="closeReviewModal()" class="px-4 py-2 rounded-xl bg-white/5 text-xs text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-violet text-xs font-semibold text-white hover:bg-brand-purple">Save Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 4. JAVASCRIPT: DATA STATE, CMS ENGINE & THREE.JS -->
+  <!-- ========================================================= -->
+  <script>
+    // --- 1. CORE DATA STORE ---
+    let siteSettings = {
+      agencyName: "YUVA",
+      agencySub: "Agency",
+      badgeText: "PREMIER 3D & MEDIA CREATIVE STUDIO",
+      headline1: "YUVA AGENCY",
+      headline2: "CONTENT CREATOR",
+      heroDesc: "We engineer high-impact 3D visual experiences, viral Instagram Reels & Shorts, cinematic YouTube video editing, and bespoke digital architectures designed to dominate modern attention.",
+      fontFamily: "'Space Grotesk', sans-serif",
+      glowTheme: "from-brand-violet via-brand-purple to-brand-blue",
+      statViews: "100M+",
+      statVideos: "450+",
+      statSatisfaction: "99.8%"
+    };
+
+    let agencyContact = {
+      email: "contact@yuvaagency.com",
+      phone: "+91 98765 43210"
+    };
+
+    let services = [
+      { id: "s1", title: "Cinematic Video Editing", cat: "Video Editing", price: "From $1,200", desc: "Hollywood-grade color grading, spatial audio mastering, and kinetic transitions." },
+      { id: "s2", title: "Instagram Reels & Shorts", cat: "Reels & Shorts", price: "From $850", desc: "High-retention 9:16 vertical video engineered with neuro-aesthetic hooks." },
+      { id: "s3", title: "YouTube Video Production", cat: "YouTube Production", price: "From $1,500", desc: "Long-form retention editing, narrative momentum, and custom thumbnail suites." },
+      { id: "s4", title: "3D Interactive Web", cat: "Web Development", price: "From $3,500", desc: "Sub-second Next.js and Three.js 3D WebGL experiences with mouse parallax." },
+      { id: "s5", title: "AI Creative Automation", cat: "AI Automation", price: "From $2,200", desc: "Generative visual pipelines, automated video localization, and custom bots." },
+      { id: "s6", title: "Brand Identity Design", cat: "Graphic Design", price: "From $1,800", desc: "Luxury brand books, typography guidelines, and digital design templates." }
+    ];
+
+    let portfolio = [
+      { id: "p1", title: "Neon Horizon 3D Launch", cat: "Web Development", status: "COMPLETED", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80", desc: "Interactive 3D product launch website with real-time shader lighting." },
+      { id: "p2", title: "Velocity Pulse Automotive", cat: "Video Editing", status: "COMPLETED", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80", desc: "High-octane commercial reel with dynamic hyper-lapse pacing." },
+      { id: "p3", title: "Cyber Odyssey: 2027 Series", cat: "YouTube Production", status: "UPCOMING", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80", desc: "Upcoming episodic sci-fi series with virtual set extensions. Releasing Q4." },
+      { id: "p4", title: "Aura Cosmetics Rebrand", cat: "Graphic Design", status: "COMPLETED", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80", desc: "Complete visual redesign and packaging renders for luxury skincare." }
+    ];
+
+    let packages = [
+      { id: "pkg1", title: "Shorts & Reels Growth", price: "$1,800", period: "/ month", isFeatured: false, desc: "Ideal for creators & brands targeting rapid short-form growth across TikTok, Reels, & Shorts.", features: "16 High-Retention Shorts, Neuro-Aesthetic Visual Hooks, Kinetic Captions, 48-Hour Rapid Delivery" },
+      { id: "pkg2", title: "Full Agency Partner", price: "$3,900", period: "/ month", isFeatured: true, desc: "Complete long-form YouTube engine, vertical reels syndication, and dedicated design squad.", features: "4 Long-form YouTube Master Edits, 20 Viral Shorts / Reels Cutdowns, 3D Custom Thumbnail Suite, Dedicated Creative Director, Unlimited Revisions" },
+      { id: "pkg3", title: "Bespoke 3D Experience", price: "$6,500", period: "/ project", isFeatured: false, desc: "Sub-second 3D interactive Next.js digital experience engineered for unprecedented brand impact.", features: "Custom WebGL / Three.js 3D Engine, Full CMS & Admin Control Panel, Mobile Optimization, Full Source Code Ownership" }
+    ];
+
+    let teamMembers = [
+      { id: "t1", name: "Siva Raj", role: "Founder & Creative Director", bio: "Pioneering cinematic digital aesthetics, 3D web architectures, and viral brand narratives.", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80", skills: "Creative Direction, 3D Architecture, DaVinci Resolve", isPublished: true },
+      { id: "t2", name: "Arun Kumar", role: "Lead YouTube Editor & Shorts Specialist", bio: "High-retention editing engineered for maximum watch-time and algorithmic velocity.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80", skills: "Premiere Pro, DaVinci Resolve, Viral Hooks", isPublished: true },
+      { id: "t3", name: "Priya Nair", role: "3D Motion & WebGL Artist", bio: "Crafting real-time WebGL interactive experiences and immersive shader lighting.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80", skills: "Three.js, Blender, GLSL Shaders", isPublished: true },
+      { id: "t4", name: "Karthik Vance", role: "Full-Stack Technologist", bio: "Building high-performance Next.js architectures with sub-second page loads.", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80", skills: "Next.js, TypeScript, Tailwind, Prisma", isPublished: true }
+    ];
+
+    let enquiries = [
+      { id: "e1", name: "Marcus Aurelius", email: "marcus@rome.com", service: "3D Interactive Web", budget: "$5,000+", status: "NEW" },
+      { id: "e2", name: "Elena Rostova", email: "elena@venture.com", service: "Instagram Reels & Shorts", budget: "$1,500 – $3,500", status: "IN_PROGRESS" }
+    ];
+
+    let reviews = [
+      { id: "r1", name: "Alexander Vance", role: "Creative Director", text: "YUVA Agency completely redefined our visual presence. The 3D web experience increased our inbound conversions by 140%." },
+      { id: "r2", name: "Sophia Chen", role: "CMO, Nexus Tech", text: "Their video editing team delivers unmatched cinematic polish with turnaround speeds that outpace traditional agencies." }
+    ];
+
+    // --- 2. PERSISTENCE HELPER ---
+    function saveAllState() {
+      try {
+        localStorage.setItem("yuva_settings", JSON.stringify(siteSettings));
+        localStorage.setItem("yuva_contact", JSON.stringify(agencyContact));
+        localStorage.setItem("yuva_services", JSON.stringify(services));
+        localStorage.setItem("yuva_portfolio", JSON.stringify(portfolio));
+        localStorage.setItem("yuva_packages", JSON.stringify(packages));
+        localStorage.setItem("yuva_team", JSON.stringify(teamMembers));
+        localStorage.setItem("yuva_reviews", JSON.stringify(reviews));
+        localStorage.setItem("yuva_enquiries", JSON.stringify(enquiries));
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
+    }
+
+    function loadAllState() {
+      try {
+        const s = localStorage.getItem("yuva_settings");
+        if (s) siteSettings = { ...siteSettings, ...JSON.parse(s) };
+
+        const c = localStorage.getItem("yuva_contact");
+        if (c) agencyContact = { ...agencyContact, ...JSON.parse(c) };
+
+        const srv = localStorage.getItem("yuva_services");
+        if (srv) services = JSON.parse(srv);
+
+        const prj = localStorage.getItem("yuva_portfolio");
+        if (prj) portfolio = JSON.parse(prj);
+
+        const pkg = localStorage.getItem("yuva_packages");
+        if (pkg) packages = JSON.parse(pkg);
+
+        const tm = localStorage.getItem("yuva_team");
+        if (tm) teamMembers = JSON.parse(tm);
+
+        const rev = localStorage.getItem("yuva_reviews");
+        if (rev) reviews = JSON.parse(rev);
+
+        const enq = localStorage.getItem("yuva_enquiries");
+        if (enq) enquiries = JSON.parse(enq);
+      } catch (e) {
+        console.error("Load error:", e);
+      }
+    }
+
+    // --- 3. PUBLIC WEBSITE RENDER ENGINE ---
+    function renderPublicSite() {
+      // 1. Home / Brand
+      document.getElementById("nav-brand-letter").innerText = (siteSettings.agencyName || "Y").charAt(0);
+      document.getElementById("nav-brand-name").innerText = siteSettings.agencyName || "YUVA";
+      document.getElementById("nav-brand-sub").innerText = siteSettings.agencySub || "Agency";
+      document.getElementById("footer-brand-name").innerText = siteSettings.agencyName || "YUVA";
+      document.getElementById("hero-badge-text").innerText = siteSettings.badgeText;
+      document.getElementById("hero-headline-1").innerText = siteSettings.headline1;
+      document.getElementById("hero-headline-2").innerText = siteSettings.headline2;
+      document.getElementById("hero-desc-text").innerText = siteSettings.heroDesc;
+      document.getElementById("hero-title-container").style.fontFamily = siteSettings.fontFamily;
+      document.getElementById("hero-headline-2").className = `block text-transparent bg-clip-text bg-gradient-to-r ${siteSettings.glowTheme} font-black tracking-wide mt-1 drop-shadow-[0_0_35px_rgba(139,92,246,0.35)]`;
+      document.getElementById("hero-stat-1").innerText = siteSettings.statViews;
+      document.getElementById("hero-stat-2").innerText = siteSettings.statVideos;
+      document.getElementById("hero-stat-3").innerText = siteSettings.statSatisfaction;
+
+      // 2. Contact display
+      document.getElementById("contact-display-email").innerText = agencyContact.email;
+      document.getElementById("contact-display-phone").innerText = agencyContact.phone;
+
+      // 3. Render Services
+      const srvGrid = document.getElementById("services-grid");
+      srvGrid.innerHTML = services.map(s => `
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono uppercase text-brand-purple font-semibold mb-2">${s.cat}</div>
+            <h3 class="font-heading font-bold text-xl text-white mb-3">${s.title}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">${s.desc}</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="font-mono text-xs text-brand-blue font-bold">${s.price}</span>
+            <a href="#contact" class="text-xs text-brand-purple hover:text-white font-semibold">Inquire →</a>
+          </div>
+        </div>
+      `).join("");
+
+      // Update Contact select options
+      const srvSelect = document.getElementById("c-service");
+      if (srvSelect) {
+        srvSelect.innerHTML = services.map(s => `<option value="${s.title}">${s.title}</option>`).join("");
+      }
+
+      // 4. Render Portfolio
+      renderPublicPortfolio("all");
+
+      // 5. Render Packages
+      const pkgGrid = document.getElementById("packages-grid");
+      pkgGrid.innerHTML = packages.map(p => `
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between ${p.isFeatured ? 'border-brand-violet/50 shadow-[0_0_40px_rgba(124,58,237,0.25)] relative' : ''}">
+          ${p.isFeatured ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-to-r from-brand-violet to-brand-blue text-[10px] font-mono font-bold text-white uppercase tracking-wider">Most Popular</div>' : ''}
+          <div class="space-y-4">
+            <h3 class="font-heading font-bold text-xl text-white">${p.title}</h3>
+            <div class="font-mono text-3xl font-bold ${p.isFeatured ? 'text-transparent bg-clip-text bg-gradient-to-r from-brand-violet via-brand-purple to-brand-blue' : 'text-white'}">
+              ${p.price} <span class="text-xs text-slate-500 font-normal">${p.period}</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">${p.desc}</p>
+            <ul class="space-y-2 text-xs text-slate-300 pt-4 border-t border-white/5">
+              ${p.features.split(',').map(f => `<li>✓ ${f.trim()}</li>`).join('')}
+            </ul>
+          </div>
+          <a href="#contact" class="mt-8 block text-center py-3 rounded-xl ${p.isFeatured ? 'bg-gradient-to-r from-brand-violet to-brand-purple hover:from-brand-purple hover:to-brand-blue text-white shadow-lg' : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'} text-xs font-semibold transition-all">
+            Get Started
+          </a>
+        </div>
+      `).join("");
+
+      // 6. Render Team
+      const teamGrid = document.getElementById("team-grid");
+      const pubTeam = teamMembers.filter(t => t.isPublished);
+      teamGrid.innerHTML = pubTeam.map(m => `
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-5 border border-white/10">
+              <img src="${m.avatar}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+              <div class="absolute bottom-2.5 left-2.5 flex items-center gap-1.5">
+                ${m.role.toLowerCase().includes("co-founder") ? 
+                  `<span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-[9px] font-mono text-amber-300 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>CO-FOUNDER</span>` :
+                  m.role.toLowerCase().includes("founder") ?
+                  `<span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-[9px] font-mono text-amber-300 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>FOUNDER</span>` :
+                  m.role.toLowerCase().includes("editor") ?
+                  `<span class="px-2.5 py-0.5 rounded-full bg-red-600/20 backdrop-blur-md border border-red-500/40 text-[9px] font-mono text-red-400 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>EDITOR</span>` :
+                  `<span class="px-2.5 py-0.5 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[9px] font-mono text-slate-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse"></span>CREATIVE</span>`
+                }
+              </div>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-white group-hover:text-brand-blue transition-colors">${m.name}</h3>
+            <div class="text-xs font-semibold ${m.role.toLowerCase().includes("founder") ? "text-amber-400 font-bold" : "text-brand-purple"} mb-2">${m.role}</div>
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-4">${m.bio}</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              ${m.skills ? m.skills.split(",").slice(0, 3).map(s => `<span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">${s.trim()}</span>`).join("") : ""}
+            </div>
+          </div>
+          <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
+            <span>Verified Team</span>
+            <span class="text-brand-purple font-mono">YUVA</span>
+          </div>
+        </div>
+      `).join("");
+
+      // 7. Render Reviews
+      const revGrid = document.getElementById("reviews-grid");
+      revGrid.innerHTML = reviews.map(r => `
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-amber-400 text-sm mb-4">★★★★★</div>
+            <p class="text-xs text-slate-300 italic leading-relaxed mb-6">"${r.text}"</p>
+          </div>
+          <div class="pt-4 border-t border-white/5">
+            <div class="font-heading font-bold text-sm text-white">${r.name}</div>
+            <div class="text-[11px] text-slate-500">${r.role}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderPublicPortfolio(filterCat) {
+      // Build filter buttons
+      const cats = ["all", ...new Set(portfolio.map(p => p.cat))];
+      const filterContainer = document.getElementById("portfolio-filters");
+      filterContainer.innerHTML = cats.map(c => `
+        <button onclick="renderPublicPortfolio('${c}')" class="px-4 py-2 rounded-full text-xs font-medium transition-colors ${filterCat === c ? 'bg-white/20 text-white border border-white/20' : 'bg-white/5 text-slate-400 hover:text-white'}">
+          ${c === 'all' ? 'All Work' : c}
+        </button>
+      `).join("");
+
+      const list = filterCat === 'all' ? portfolio : portfolio.filter(p => p.cat === filterCat);
+      const prjGrid = document.getElementById("portfolio-grid");
+      prjGrid.innerHTML = list.map(p => `
+        <div class="glass-card rounded-3xl overflow-hidden group">
+          <div class="h-56 overflow-hidden relative">
+            <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 right-3">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold backdrop-blur-md border ${
+                p.status === 'UPCOMING'
+                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                  : p.status === 'IN_PROGRESS'
+                  ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
+                  : 'bg-green-500/20 text-green-300 border-green-500/40'
+              }">
+                ${p.status === 'UPCOMING' ? '🚀 UPCOMING RELEASE' : p.status === 'IN_PROGRESS' ? '⚡ IN PROGRESS' : '✓ COMPLETED'}
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-[10px] font-mono uppercase text-brand-blue font-bold mb-1">${p.cat}</div>
+            <h3 class="font-heading font-bold text-lg text-white mb-2">${p.title}</h3>
+            <p class="text-xs text-slate-400 line-clamp-2">${p.desc}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // --- 4. ADMIN DASHBOARD RENDER & ACTIONS ---
+    function renderAdminDashboard() {
+      // Update Counters
+      document.getElementById("stat-services").innerText = services.length;
+      document.getElementById("stat-portfolio").innerText = portfolio.length;
+      document.getElementById("stat-team").innerText = teamMembers.length;
+      document.getElementById("stat-enquiries").innerText = enquiries.length;
+
+      // Populate Home Form
+      document.getElementById("adm-agency-name").value = siteSettings.agencyName || "YUVA";
+      document.getElementById("adm-agency-sub").value = siteSettings.agencySub || "Agency";
+      document.getElementById("adm-badge-text").value = siteSettings.badgeText;
+      document.getElementById("adm-headline-1").value = siteSettings.headline1;
+      document.getElementById("adm-headline-2").value = siteSettings.headline2;
+      document.getElementById("adm-hero-desc").value = siteSettings.heroDesc;
+      document.getElementById("adm-font-family").value = siteSettings.fontFamily;
+      document.getElementById("adm-glow-theme").value = siteSettings.glowTheme;
+      document.getElementById("adm-stat-1").value = siteSettings.statViews;
+      document.getElementById("adm-stat-2").value = siteSettings.statVideos;
+      document.getElementById("adm-stat-3").value = siteSettings.statSatisfaction;
+
+      // Populate Contact Form
+      document.getElementById("adm-contact-email").value = agencyContact.email;
+      document.getElementById("adm-contact-phone").value = agencyContact.phone;
+
+      // Render Admin Services Table
+      const srvTable = document.getElementById("admin-services-list");
+      srvTable.innerHTML = services.map(s => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white">${s.title}</td>
+          <td class="p-3.5 text-brand-blue">${s.cat}</td>
+          <td class="p-3.5 font-mono text-slate-300">${s.price}</td>
+          <td class="p-3.5 text-slate-400 max-w-xs truncate">${s.desc}</td>
+          <td class="p-3.5 text-right space-x-1 whitespace-nowrap">
+            <button onclick="editService('${s.id}')" class="px-2 py-1 rounded bg-brand-violet/20 hover:bg-brand-violet/40 text-brand-blue text-[10px] font-semibold border border-brand-violet/30">Edit</button>
+            <button onclick="deleteService('${s.id}')" class="px-2 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px]">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+
+      // Render Admin Portfolio Table
+      const prjTable = document.getElementById("admin-portfolio-list");
+      prjTable.innerHTML = portfolio.map(p => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white flex items-center gap-2">
+            <img src="${p.img}" class="w-10 h-7 rounded object-cover border border-white/10 shrink-0">
+            <span>${p.title}</span>
+          </td>
+          <td class="p-3.5 text-brand-blue">${p.cat}</td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              p.status === 'UPCOMING' ? 'bg-amber-500/20 text-amber-300' : p.status === 'IN_PROGRESS' ? 'bg-blue-500/20 text-blue-300' : 'bg-green-500/20 text-green-300'
+            }">
+              ${p.status}
+            </span>
+          </td>
+          <td class="p-3.5 text-slate-400 max-w-xs truncate">${p.desc}</td>
+          <td class="p-3.5 text-right space-x-1 whitespace-nowrap">
+            <button onclick="editPortfolio('${p.id}')" class="px-2 py-1 rounded bg-brand-violet/20 hover:bg-brand-violet/40 text-brand-blue text-[10px] font-semibold border border-brand-violet/30">Edit</button>
+            <button onclick="deletePortfolio('${p.id}')" class="px-2 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px]">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+
+      // Render Admin Packages Table
+      const pkgTable = document.getElementById("admin-packages-list");
+      pkgTable.innerHTML = packages.map(p => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white">${p.title}</td>
+          <td class="p-3.5 font-mono text-brand-blue">${p.price} <span class="text-slate-500">${p.period}</span></td>
+          <td class="p-3.5">${p.isFeatured ? '<span class="px-2 py-0.5 rounded bg-brand-purple/20 text-brand-purple text-[10px] font-bold">Featured</span>' : '<span class="text-slate-500 text-[10px]">Standard</span>'}</td>
+          <td class="p-3.5 text-slate-400 max-w-xs truncate">${p.features}</td>
+          <td class="p-3.5 text-right space-x-1 whitespace-nowrap">
+            <button onclick="editPackage('${p.id}')" class="px-2 py-1 rounded bg-brand-violet/20 hover:bg-brand-violet/40 text-brand-blue text-[10px] font-semibold border border-brand-violet/30">Edit</button>
+            <button onclick="deletePackage('${p.id}')" class="px-2 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px]">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+
+      // Render Admin Team Table
+      const tmTable = document.getElementById("admin-team-list");
+      tmTable.innerHTML = teamMembers.map(m => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white flex items-center gap-2">
+            <img src="${m.avatar}" class="w-8 h-8 rounded-lg object-cover border border-white/10 shrink-0">
+            <span>${m.name}</span>
+          </td>
+          <td class="p-3.5 ${m.role.toLowerCase().includes('founder') ? 'text-amber-400 font-bold' : 'text-brand-purple'}">${m.role}</td>
+          <td class="p-3.5 font-mono text-[11px] text-slate-300">${m.skills || ''}</td>
+          <td class="p-3.5"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${m.isPublished ? 'bg-green-500/20 text-green-400' : 'bg-slate-500/20 text-slate-400'}">${m.isPublished ? 'Published' : 'Draft'}</span></td>
+          <td class="p-3.5 text-right space-x-1 whitespace-nowrap">
+            <button onclick="editTeamMember('${m.id}')" class="px-2 py-1 rounded bg-brand-violet/20 hover:bg-brand-violet/40 text-brand-blue text-[10px] font-semibold border border-brand-violet/30">Edit Photo / Info</button>
+            <button onclick="toggleTeamPublish('${m.id}')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px]">${m.isPublished ? 'Unpublish' : 'Publish'}</button>
+            <button onclick="removeTeamMember('${m.id}')" class="px-2 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px]">Remove</button>
+          </td>
+        </tr>
+      `).join("");
+
+      // Render Admin Reviews Table
+      const revTable = document.getElementById("admin-reviews-list");
+      revTable.innerHTML = reviews.map(r => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white">${r.name}</td>
+          <td class="p-3.5 text-slate-300">${r.role}</td>
+          <td class="p-3.5 text-amber-400">★★★★★</td>
+          <td class="p-3.5 text-slate-400 max-w-xs truncate">"${r.text}"</td>
+          <td class="p-3.5 text-right space-x-1 whitespace-nowrap">
+            <button onclick="editReview('${r.id}')" class="px-2 py-1 rounded bg-brand-violet/20 hover:bg-brand-violet/40 text-brand-blue text-[10px] font-semibold border border-brand-violet/30">Edit</button>
+            <button onclick="deleteReview('${r.id}')" class="px-2 py-1 rounded bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px]">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+
+      // Render Admin Inquiries Table
+      const enqTable = document.getElementById("admin-enquiries-list");
+      enqTable.innerHTML = enquiries.map(e => `
+        <tr>
+          <td class="p-3.5 font-semibold text-white">${e.name}<br><span class="text-slate-500 text-[10px] font-normal">${e.email}</span></td>
+          <td class="p-3.5 text-slate-300">${e.service}</td>
+          <td class="p-3.5 font-mono text-slate-400">${e.budget}</td>
+          <td class="p-3.5"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${e.status === 'NEW' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}">${e.status}</span></td>
+          <td class="p-3.5 text-right whitespace-nowrap">
+            <button onclick="toggleEnquiryStatus('${e.id}')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px]">Toggle Status</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    // --- 5. TAB SWITCHING ---
+    function switchAdminTab(tab) {
+      ['home', 'services', 'portfolio', 'packages', 'team', 'reviews', 'contact'].forEach(t => {
+        const el = document.getElementById("admin-tab-" + t);
+        const btn = document.getElementById("tab-btn-" + t);
+        if (el) el.classList.add("hidden");
+        if (btn) btn.className = "px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all text-slate-400 hover:text-white";
+      });
+      const activeEl = document.getElementById("admin-tab-" + tab);
+      const activeBtn = document.getElementById("tab-btn-" + tab);
+      if (activeEl) activeEl.classList.remove("hidden");
+      if (activeBtn) activeBtn.className = "px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all bg-brand-violet/20 text-white border border-brand-violet/40";
+    }
+
+    // --- 6. HOME & CONTACT SAVE HANDLERS ---
+    function handleSaveHomeSettings(e) {
+      e.preventDefault();
+      siteSettings.agencyName = document.getElementById("adm-agency-name").value;
+      siteSettings.agencySub = document.getElementById("adm-agency-sub").value;
+      siteSettings.badgeText = document.getElementById("adm-badge-text").value;
+      siteSettings.headline1 = document.getElementById("adm-headline-1").value;
+      siteSettings.headline2 = document.getElementById("adm-headline-2").value;
+      siteSettings.heroDesc = document.getElementById("adm-hero-desc").value;
+      siteSettings.fontFamily = document.getElementById("adm-font-family").value;
+      siteSettings.glowTheme = document.getElementById("adm-glow-theme").value;
+      siteSettings.statViews = document.getElementById("adm-stat-1").value;
+      siteSettings.statVideos = document.getElementById("adm-stat-2").value;
+      siteSettings.statSatisfaction = document.getElementById("adm-stat-3").value;
+
+      saveAllState();
+      renderPublicSite();
+      alert("🎉 Home & Hero settings updated on the website!");
+    }
+
+    function handleSaveContactInfo(e) {
+      e.preventDefault();
+      agencyContact.email = document.getElementById("adm-contact-email").value;
+      agencyContact.phone = document.getElementById("adm-contact-phone").value;
+      saveAllState();
+      renderPublicSite();
+      alert("✅ Contact details updated successfully!");
+    }
+
+    // --- 7. SERVICES CRUD ---
+    let editingServiceId = null;
+    function openServiceModal() {
+      editingServiceId = null;
+      document.getElementById("service-modal-title").innerText = "Add New Service";
+      document.getElementById("srv-title").value = "";
+      document.getElementById("srv-cat").value = "";
+      document.getElementById("srv-price").value = "";
+      document.getElementById("srv-desc").value = "";
+      document.getElementById("service-form-modal").classList.remove("hidden");
+    }
+    function editService(id) {
+      const s = services.find(x => x.id === id);
+      if (!s) return;
+      editingServiceId = id;
+      document.getElementById("service-modal-title").innerText = "Edit Service: " + s.title;
+      document.getElementById("srv-title").value = s.title;
+      document.getElementById("srv-cat").value = s.cat;
+      document.getElementById("srv-price").value = s.price;
+      document.getElementById("srv-desc").value = s.desc;
+      document.getElementById("service-form-modal").classList.remove("hidden");
+    }
+    function closeServiceModal() {
+      document.getElementById("service-form-modal").classList.add("hidden");
+      editingServiceId = null;
+    }
+    function handleSaveService(e) {
+      e.preventDefault();
+      const title = document.getElementById("srv-title").value;
+      const cat = document.getElementById("srv-cat").value;
+      const price = document.getElementById("srv-price").value;
+      const desc = document.getElementById("srv-desc").value;
+
+      if (editingServiceId) {
+        services = services.map(s => s.id === editingServiceId ? { ...s, title, cat, price, desc } : s);
+      } else {
+        services.push({ id: "s" + Date.now(), title, cat, price, desc });
+      }
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+      closeServiceModal();
+    }
+    function deleteService(id) {
+      if (confirm("Delete this service?")) {
+        services = services.filter(s => s.id !== id);
+        saveAllState();
+        renderPublicSite();
+        renderAdminDashboard();
+      }
+    }
+
+    // --- 8. PORTFOLIO CRUD (PAST & UPCOMING) ---
+    let editingPortfolioId = null;
+    let uploadedProjectPhoto = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+
+    function openPortfolioModal() {
+      editingPortfolioId = null;
+      document.getElementById("portfolio-modal-title").innerText = "Add Project / Upcoming Production";
+      document.getElementById("prj-title").value = "";
+      document.getElementById("prj-cat").value = "Video Editing";
+      document.getElementById("prj-status").value = "COMPLETED";
+      uploadedProjectPhoto = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+      document.getElementById("prj-photo-preview").src = uploadedProjectPhoto;
+      document.getElementById("prj-img").value = uploadedProjectPhoto;
+      document.getElementById("prj-desc").value = "";
+      document.getElementById("portfolio-form-modal").classList.remove("hidden");
+    }
+    function editPortfolio(id) {
+      const p = portfolio.find(x => x.id === id);
+      if (!p) return;
+      editingPortfolioId = id;
+      document.getElementById("portfolio-modal-title").innerText = "Edit Project: " + p.title;
+      document.getElementById("prj-title").value = p.title;
+      document.getElementById("prj-cat").value = p.cat;
+      document.getElementById("prj-status").value = p.status || "COMPLETED";
+      uploadedProjectPhoto = p.img || "";
+      document.getElementById("prj-photo-preview").src = uploadedProjectPhoto;
+      document.getElementById("prj-img").value = uploadedProjectPhoto;
+      document.getElementById("prj-desc").value = p.desc;
+      document.getElementById("portfolio-form-modal").classList.remove("hidden");
+    }
+    function closePortfolioModal() {
+      document.getElementById("portfolio-form-modal").classList.add("hidden");
+      editingPortfolioId = null;
+    }
+    function handleProjectPhotoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = new Image();
+        img.onload = function() {
+          const maxDim = 1200;
+          let width = img.width, height = img.height;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) { height = Math.round((height * maxDim) / width); width = maxDim; }
+            else { width = Math.round((width * maxDim) / height); height = maxDim; }
+          }
+          const canvas = document.createElement("canvas");
+          canvas.width = width; canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          uploadedProjectPhoto = canvas.toDataURL("image/jpeg", 0.88);
+          document.getElementById("prj-photo-preview").src = uploadedProjectPhoto;
+          document.getElementById("prj-img").value = uploadedProjectPhoto;
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    function handleSavePortfolio(e) {
+      e.preventDefault();
+      const title = document.getElementById("prj-title").value;
+      const cat = document.getElementById("prj-cat").value;
+      const status = document.getElementById("prj-status").value;
+      const img = document.getElementById("prj-img").value || uploadedProjectPhoto;
+      const desc = document.getElementById("prj-desc").value;
+
+      if (editingPortfolioId) {
+        portfolio = portfolio.map(p => p.id === editingPortfolioId ? { ...p, title, cat, status, img, desc } : p);
+      } else {
+        portfolio.push({ id: "p" + Date.now(), title, cat, status, img, desc });
+      }
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+      closePortfolioModal();
+      alert("✅ Project saved to portfolio!");
+    }
+    function deletePortfolio(id) {
+      if (confirm("Delete this project?")) {
+        portfolio = portfolio.filter(p => p.id !== id);
+        saveAllState();
+        renderPublicSite();
+        renderAdminDashboard();
+      }
+    }
+
+    // --- 9. PACKAGES CRUD ---
+    let editingPackageId = null;
+    function openPackageModal() {
+      editingPackageId = null;
+      document.getElementById("package-modal-title").innerText = "Add New Package";
+      document.getElementById("pkg-title").value = "";
+      document.getElementById("pkg-price").value = "";
+      document.getElementById("pkg-period").value = "/ month";
+      document.getElementById("pkg-desc").value = "";
+      document.getElementById("pkg-features").value = "";
+      document.getElementById("pkg-featured").checked = false;
+      document.getElementById("package-form-modal").classList.remove("hidden");
+    }
+    function editPackage(id) {
+      const p = packages.find(x => x.id === id);
+      if (!p) return;
+      editingPackageId = id;
+      document.getElementById("package-modal-title").innerText = "Edit Package: " + p.title;
+      document.getElementById("pkg-title").value = p.title;
+      document.getElementById("pkg-price").value = p.price;
+      document.getElementById("pkg-period").value = p.period;
+      document.getElementById("pkg-desc").value = p.desc;
+      document.getElementById("pkg-features").value = p.features;
+      document.getElementById("pkg-featured").checked = Boolean(p.isFeatured);
+      document.getElementById("package-form-modal").classList.remove("hidden");
+    }
+    function closePackageModal() {
+      document.getElementById("package-form-modal").classList.add("hidden");
+      editingPackageId = null;
+    }
+    function handleSavePackage(e) {
+      e.preventDefault();
+      const title = document.getElementById("pkg-title").value;
+      const price = document.getElementById("pkg-price").value;
+      const period = document.getElementById("pkg-period").value;
+      const desc = document.getElementById("pkg-desc").value;
+      const features = document.getElementById("pkg-features").value;
+      const isFeatured = document.getElementById("pkg-featured").checked;
+
+      if (editingPackageId) {
+        packages = packages.map(p => p.id === editingPackageId ? { ...p, title, price, period, desc, features, isFeatured } : p);
+      } else {
+        packages.push({ id: "pkg" + Date.now(), title, price, period, desc, features, isFeatured });
+      }
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+      closePackageModal();
+    }
+    function deletePackage(id) {
+      if (confirm("Delete this package?")) {
+        packages = packages.filter(p => p.id !== id);
+        saveAllState();
+        renderPublicSite();
+        renderAdminDashboard();
+      }
+    }
+
+    // --- 10. TEAM MEMBERS CRUD (WITH ROLE PRESETS & CAMERA/GALLERY UPLOAD) ---
+    let editingTeamId = null;
+    let uploadedPhotoData = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80";
+
+    function openAddTeamModal() {
+      editingTeamId = null;
+      document.getElementById("team-modal-title").innerText = "Add New Team Member";
+      document.getElementById("team-modal-submit-btn").innerText = "Create Member";
+      document.getElementById("m-name").value = "";
+      document.getElementById("m-role").value = "Lead Video Editor & Shorts Specialist";
+      document.getElementById("m-bio").value = "Crafting viral high-retention shorts, kinetic pacing, and Hollywood color grading.";
+      document.getElementById("m-skills").value = "Premiere Pro, DaVinci Resolve, After Effects, Viral Hooks";
+      uploadedPhotoData = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80";
+      document.getElementById("m-photo-preview").src = uploadedPhotoData;
+      document.getElementById("m-avatar").value = uploadedPhotoData;
+      document.getElementById("m-upload-badge").classList.add("hidden");
+      document.getElementById("team-form-modal").classList.remove("hidden");
+    }
+    function editTeamMember(id) {
+      const member = teamMembers.find(m => m.id === id);
+      if (!member) return;
+      editingTeamId = id;
+      document.getElementById("team-modal-title").innerText = "Edit Member: " + member.name;
+      document.getElementById("team-modal-submit-btn").innerText = "Save Changes";
+      document.getElementById("m-name").value = member.name || "";
+      document.getElementById("m-role").value = member.role || "";
+      document.getElementById("m-bio").value = member.bio || "";
+      document.getElementById("m-skills").value = member.skills || "";
+      uploadedPhotoData = member.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80";
+      document.getElementById("m-photo-preview").src = uploadedPhotoData;
+      document.getElementById("m-avatar").value = member.avatar || "";
+      document.getElementById("m-upload-badge").classList.add("hidden");
+      document.getElementById("team-form-modal").classList.remove("hidden");
+    }
+    function closeTeamModal() {
+      document.getElementById("team-form-modal").classList.add("hidden");
+      editingTeamId = null;
+    }
+    function setRolePreset(role) {
+      document.getElementById("m-role").value = role;
+    }
+    function handleTeamPhotoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const badge = document.getElementById("m-upload-badge");
+      if (badge) {
+        badge.innerText = "Processing & optimizing photo...";
+        badge.classList.remove("hidden");
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = new Image();
+        img.onload = function() {
+          const maxDim = 1200;
+          let width = img.width, height = img.height;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) { height = Math.round((height * maxDim) / width); width = maxDim; }
+            else { width = Math.round((width * maxDim) / height); height = maxDim; }
+          }
+          const canvas = document.createElement("canvas");
+          canvas.width = width; canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          uploadedPhotoData = canvas.toDataURL("image/jpeg", 0.88);
+          document.getElementById("m-photo-preview").src = uploadedPhotoData;
+          document.getElementById("m-avatar").value = uploadedPhotoData;
+          if (badge) {
+            badge.innerText = "✓ Photo loaded directly from your device!";
+            badge.classList.remove("hidden");
+          }
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    function handleSaveTeamMember(e) {
+      e.preventDefault();
+      const name = document.getElementById("m-name").value;
+      const role = document.getElementById("m-role").value;
+      const avatar = document.getElementById("m-avatar").value || uploadedPhotoData;
+      const bio = document.getElementById("m-bio").value || "Dedicated agency creative specialist.";
+      const skills = document.getElementById("m-skills").value || "Creative Media Production";
+
+      if (editingTeamId) {
+        teamMembers = teamMembers.map(m => m.id === editingTeamId ? { ...m, name, role, avatar, bio, skills } : m);
+        alert("✅ Member photo and details updated!");
+      } else {
+        teamMembers.push({ id: "t" + Date.now(), name, role, bio, avatar, skills, isPublished: true });
+        alert("✅ New team member added!");
+      }
+
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+      closeTeamModal();
+    }
+    function toggleTeamPublish(id) {
+      teamMembers = teamMembers.map(m => m.id === id ? { ...m, isPublished: !m.isPublished } : m);
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+    }
+    function removeTeamMember(id) {
+      if (confirm("Remove this team member?")) {
+        teamMembers = teamMembers.filter(m => m.id !== id);
+        saveAllState();
+        renderPublicSite();
+        renderAdminDashboard();
+      }
+    }
+
+    // --- 11. REVIEWS CRUD ---
+    let editingReviewId = null;
+    function openReviewModal() {
+      editingReviewId = null;
+      document.getElementById("review-modal-title").innerText = "Add Client Review";
+      document.getElementById("rev-name").value = "";
+      document.getElementById("rev-role").value = "";
+      document.getElementById("rev-text").value = "";
+      document.getElementById("review-form-modal").classList.remove("hidden");
+    }
+    function editReview(id) {
+      const r = reviews.find(x => x.id === id);
+      if (!r) return;
+      editingReviewId = id;
+      document.getElementById("review-modal-title").innerText = "Edit Review: " + r.name;
+      document.getElementById("rev-name").value = r.name;
+      document.getElementById("rev-role").value = r.role;
+      document.getElementById("rev-text").value = r.text;
+      document.getElementById("review-form-modal").classList.remove("hidden");
+    }
+    function closeReviewModal() {
+      document.getElementById("review-form-modal").classList.add("hidden");
+      editingReviewId = null;
+    }
+    function handleSaveReview(e) {
+      e.preventDefault();
+      const name = document.getElementById("rev-name").value;
+      const role = document.getElementById("rev-role").value;
+      const text = document.getElementById("rev-text").value;
+
+      if (editingReviewId) {
+        reviews = reviews.map(r => r.id === editingReviewId ? { ...r, name, role, text } : r);
+      } else {
+        reviews.push({ id: "r" + Date.now(), name, role, text });
+      }
+      saveAllState();
+      renderPublicSite();
+      renderAdminDashboard();
+      closeReviewModal();
+    }
+    function deleteReview(id) {
+      if (confirm("Delete this review?")) {
+        reviews = reviews.filter(r => r.id !== id);
+        saveAllState();
+        renderPublicSite();
+        renderAdminDashboard();
+      }
+    }
+
+    // --- 12. INQUIRIES & CONTACT ---
+    function toggleEnquiryStatus(id) {
+      enquiries = enquiries.map(e => e.id === id ? { ...e, status: e.status === 'NEW' ? 'COMPLETED' : 'NEW' } : e);
+      saveAllState();
+      renderAdminDashboard();
+    }
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const newE = {
+        id: "e" + Date.now(),
+        name: document.getElementById("c-name").value,
+        email: document.getElementById("c-email").value,
+        service: document.getElementById("c-service").value,
+        budget: document.getElementById("c-budget").value,
+        status: "NEW"
+      };
+      enquiries.unshift(newE);
+      saveAllState();
+      document.getElementById("contact-success").classList.remove("hidden");
+      document.getElementById("contact-form").reset();
+      renderAdminDashboard();
+    }
+
+    // --- 13. MASTER EXPORT FUNCTION (FOR NETLIFY HOSTING) ---
+    function exportUpdatedWebsite() {
+      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "index.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      alert("📥 'index.html' downloaded successfully!\n\nAll your latest Home settings, Services, Portfolio (Past & Upcoming), Packages, Team members, Photos, and Reviews are now baked into this file.\n\nSimply drag & drop this file into Netlify Drop to publish worldwide!");
+    }
+
+    // --- 14. AUTHENTICATION & MODAL LOGIC ---
+    function openAdminModal() {
+      document.getElementById("admin-modal").classList.remove("hidden");
+    }
+    function closeAdminModal() {
+      document.getElementById("admin-modal").classList.add("hidden");
+      if (window.location.hash === "#admin") {
+        history.replaceState(null, null, ' ');
+      }
+    }
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById("admin-user").value;
+      const p = document.getElementById("admin-pass").value;
+      if ((u === "admin@yuvaagency.com" || u === "admin") && p === "YuvaAdmin2026!") {
+        document.getElementById("admin-login-box").classList.add("hidden");
+        document.getElementById("admin-dashboard-box").classList.remove("hidden");
+        renderAdminDashboard();
+      } else {
+        document.getElementById("admin-login-error").classList.remove("hidden");
+      }
+    }
+    function handleAdminLogout() {
+      document.getElementById("admin-dashboard-box").classList.add("hidden");
+      document.getElementById("admin-login-box").classList.remove("hidden");
+    }
+
+    // Keyboard shortcut Ctrl+Shift+A
+    window.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+        openAdminModal();
+      }
+    });
+
+    // --- 15. THREE.JS 3D ENGINE (YouTube & Shorts Interactive Model) ---
+    function init3DYouTubeShorts() {
+      const container = document.getElementById("three-container");
+      if (!container) return;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 1.4);
+      dirLight.position.set(5, 5, 5);
+      scene.add(dirLight);
+
+      const redLight = new THREE.PointLight(0xff0000, 3.5, 8);
+      redLight.position.set(0, 0, 2);
+      scene.add(redLight);
+
+      const blueLight = new THREE.PointLight(0x38bdf8, 2, 8);
+      blueLight.position.set(3, 2, 2);
+      scene.add(blueLight);
+
+      const masterGroup = new THREE.Group();
+      scene.add(masterGroup);
+
+      // 1. Phone Card
+      const phoneGroup = new THREE.Group();
+      phoneGroup.position.set(-0.2, 0, 0.2);
+      masterGroup.add(phoneGroup);
+
+      const bezel = new THREE.Mesh(
+        new THREE.BoxGeometry(1.4, 2.5, 0.08),
+        new THREE.MeshStandardMaterial({ color: 0x0c0e18, metalness: 0.9, roughness: 0.2 })
+      );
+      phoneGroup.add(bezel);
+
+      const screen = new THREE.Mesh(
+        new THREE.PlaneGeometry(1.3, 2.38),
+        new THREE.MeshStandardMaterial({ color: 0x080912, roughness: 0.2, metalness: 0.5 })
+      );
+      screen.position.z = 0.045;
+      phoneGroup.add(screen);
+
+      const track = new THREE.Mesh(
+        new THREE.PlaneGeometry(1.2, 0.02),
+        new THREE.MeshBasicMaterial({ color: 0x334155 })
+      );
+      track.position.set(0, -1.1, 0.05);
+      phoneGroup.add(track);
+
+      const progressBar = new THREE.Mesh(
+        new THREE.PlaneGeometry(1.2, 0.025),
+        new THREE.MeshBasicMaterial({ color: 0xff0000 })
+      );
+      progressBar.position.set(-0.6, -1.1, 0.052);
+      phoneGroup.add(progressBar);
+
+      // 2. YouTube Crimson Play Emblem
+      const ytEmblem = new THREE.Group();
+      ytEmblem.position.set(-0.2, 0.1, 0.45);
+      masterGroup.add(ytEmblem);
+
+      const badge = new THREE.Mesh(
+        new THREE.BoxGeometry(0.7, 0.48, 0.1),
+        new THREE.MeshStandardMaterial({ color: 0xff0000, emissive: 0xcc0000, emissiveIntensity: 1.2, roughness: 0.2 })
+      );
+      ytEmblem.add(badge);
+
+      const triangle = new THREE.Mesh(
+        new THREE.ConeGeometry(0.18, 0.24, 3),
+        new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 1.5 })
+      );
+      triangle.rotation.z = -Math.PI / 2;
+      triangle.position.set(0.02, 0, 0.06);
+      ytEmblem.add(triangle);
+
+      // 3. Wide Screen
+      const wideScreen = new THREE.Mesh(
+        new THREE.BoxGeometry(1.8, 1.05, 0.04),
+        new THREE.MeshStandardMaterial({ color: 0x090d1c, emissive: 0x1e1b4b, emissiveIntensity: 0.4 })
+      );
+      wideScreen.position.set(0.85, -0.15, -0.2);
+      wideScreen.rotation.y = -0.3;
+      masterGroup.add(wideScreen);
+
+      // 4. Equalizer Bars
+      const barsGroup = new THREE.Group();
+      barsGroup.position.set(-0.2, -0.6, 0.35);
+      masterGroup.add(barsGroup);
+
+      const bars = [];
+      for (let i = 0; i < 7; i++) {
+        const bar = new THREE.Mesh(
+          new THREE.BoxGeometry(0.035, 0.2, 0.02),
+          new THREE.MeshStandardMaterial({
+            color: i % 2 === 0 ? 0x38bdf8 : 0x8b5cf6,
+            emissive: i % 2 === 0 ? 0x0284c7 : 0x7c3aed,
+            emissiveIntensity: 1.2
+          })
+        );
+        bar.position.x = (i - 3) * 0.09;
+        barsGroup.add(bar);
+        bars.push(bar);
+      }
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener("mousemove", (e) => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      });
+
+      function animate(time) {
+        requestAnimationFrame(animate);
+        const t = time * 0.001;
+
+        masterGroup.rotation.y += (mouseX * 0.45 - masterGroup.rotation.y) * 0.06;
+        masterGroup.rotation.x += (-mouseY * 0.35 - masterGroup.rotation.x) * 0.06;
+        masterGroup.position.y = Math.sin(t * 1.5) * 0.06;
+
+        ytEmblem.position.y = 0.1 + Math.sin(t * 2) * 0.04;
+        ytEmblem.rotation.y = Math.sin(t * 1.2) * 0.12;
+
+        const prog = (t * 0.25) % 1;
+        progressBar.scale.x = Math.max(0.02, prog);
+        progressBar.position.x = -0.6 + (prog * 1.2) / 2;
+
+        bars.forEach((b, idx) => {
+          b.scale.y = 0.4 + Math.abs(Math.sin(t * 6 + idx * 0.8)) * 1.1;
+        });
+
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(animate);
+
+      window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    }
+
+    // --- 16. INITIALIZATION & HASH LISTENER ---
+    window.addEventListener("DOMContentLoaded", () => {
+      loadAllState();
+      renderPublicSite();
+      init3DYouTubeShorts();
+
+      function checkAdminHash() {
+        if (window.location.hash === "#admin" || window.location.search.includes("admin=true")) {
+          openAdminModal();
+        }
+      }
+      checkAdminHash();
+      window.addEventListener("hashchange", checkAdminHash);
+    });
+  </script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC8PVWeYxNVmbI7jiBBTBTSm9KMmPIJmnY",
+      authDomain: "yuva-agency.firebaseapp.com",
+      projectId: "yuva-agency",
+      storageBucket: "yuva-agency.firebasestorage.app",
+      messagingSenderId: "373751940666",
+      appId: "1:373751940666:web:ebba876c6017533609d703",
+      measurementId: "G-ZCEK8RPBBQ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+  </script></body>
+</html>
